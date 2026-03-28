@@ -15,7 +15,7 @@ export function Nav() {
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
       height: 'var(--nav-h)',
       borderBottom: '1px solid var(--border)',
-      background: 'rgba(250,250,248,0.92)',
+      background: 'rgba(250,250,248,0.94)',
       backdropFilter: 'blur(12px)',
       display: 'flex', alignItems: 'center',
       padding: '0 2rem',
@@ -28,6 +28,7 @@ export function Nav() {
         letterSpacing: '0.01em',
         whiteSpace: 'nowrap',
         flexShrink: 0,
+        color: 'var(--ink)',
       }}>
         David Zarraga Kelly
       </Link>
@@ -53,7 +54,6 @@ export function Nav() {
         })}
       </div>
 
-      {/* Spacer */}
       <div style={{ flex: 1 }} />
 
       {/* Search */}
@@ -76,12 +76,10 @@ export function Nav() {
             transition: 'width 0.2s ease',
           }}
         />
-
-        {/* Search dropdown */}
         {focused && query && (
           <div style={{
             position: 'absolute', top: 'calc(100% + 8px)', right: 0,
-            width: '320px',
+            width: '300px',
             background: 'var(--bg-card)',
             border: '1px solid var(--border)',
             borderRadius: '8px',
@@ -94,19 +92,23 @@ export function Nav() {
               </div>
             ) : results.map(r => (
               <button
-                key={r.path}
-                onClick={() => { navigate(r.path); setQuery(''); }}
+                key={r.id}
+                onClick={() => { navigate(`/projects/${r.id}`); setQuery(''); }}
                 style={{
                   display: 'block', width: '100%', textAlign: 'left',
                   padding: '0.75rem 1rem',
                   borderBottom: '1px solid var(--border)',
+                  background: 'transparent',
                   transition: 'background 0.1s',
+                  cursor: 'pointer',
                 }}
                 onMouseEnter={e => (e.currentTarget.style.background = 'var(--tag-bg)')}
                 onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
               >
-                <div style={{ fontSize: '0.75rem', color: 'var(--ink-faint)', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                  {r.type}
+                <div style={{ display: 'flex', gap: '0.35rem', marginBottom: '3px', flexWrap: 'wrap' }}>
+                  {r.typeTags.map(t => (
+                    <span key={t} style={{ fontSize: '0.68rem', color: 'var(--ink-faint)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{t}</span>
+                  ))}
                 </div>
                 <div style={{ fontSize: '0.875rem', fontWeight: 400, color: 'var(--ink)' }}>{r.title}</div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--ink-light)', marginTop: '2px' }}>{r.subtitle}</div>

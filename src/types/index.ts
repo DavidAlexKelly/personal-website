@@ -1,20 +1,13 @@
-export type Category = 'ideas' | 'built' | 'writing' | 'about';
+export type Category = 'projects' | 'about';
 
-export interface Tag {
-  label: string;
-}
-
-export interface Idea {
-  id: string;
-  title: string;
-  subtitle: string;
-  body: string;
-  date: string;
-  tags: string[];
-  status?: 'concept' | 'in progress' | 'built' | 'published';
-  githubUrl?: string;
-  liveUrl?: string;
-}
+// ─────────────────────────────────────────────
+//  TAG SYSTEM
+//
+//  type     → what kind of thing it is (built, concept, writing, campaign)
+//  topic    → what it's about (policy, economics, tech, culture, democracy)
+//
+//  Add new tags freely — they auto-appear in the filter UI.
+// ─────────────────────────────────────────────
 
 export interface Project {
   id: string;
@@ -22,28 +15,20 @@ export interface Project {
   subtitle: string;
   body: string;
   date: string;
-  tags: string[];
-  url?: string;
-  githubUrl?: string;
-  // embedPath: serves the project from /public/projects/<id>/
-  // Set this for projects in the /projects folder.
-  // For external live sites, use url instead.
-  embedPath?: string;
-  status?: 'live' | 'archived' | 'in progress';
-}
 
-export interface Essay {
-  id: string;
-  title: string;
-  subtitle: string;
-  body: string;
-  date: string;
-  tags: string[];
-  readTime?: string;
+  // type tags — shown as primary badges
+  typeTags: string[];    // e.g. ['built', 'campaign'] or ['concept', 'writing']
+
+  // topic tags — shown smaller, used for filtering
+  topicTags: string[];   // e.g. ['policy', 'democracy', 'online safety']
+
+  // links
+  githubUrl?: string;
+  liveUrl?: string;
+  embedPath?: string;    // renders project in iframe within your site
 }
 
 export interface NavItem {
   label: string;
   path: string;
-  category: Category;
 }

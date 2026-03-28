@@ -1,26 +1,28 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Nav } from './components/Nav';
 import { Home } from './pages/Home';
-import { IdeasList, IdeaDetail } from './pages/Ideas';
-import { BuiltList, BuiltDetail } from './pages/Built';
-import { WritingList, EssayDetail } from './pages/Writing';
+import { ProjectsList, ProjectDetail } from './pages/Projects';
 import { About } from './pages/About';
 import './index.css';
+
+// ─────────────────────────────────────────────
+//  ADDING A NEW SECTION?
+//  1. Add entries to src/data/projects.ts
+//  2. If it's an embedded sub-app, add its source to /projects/<id>/
+//     and add a rewrite to vercel.json
+//  3. That's it — tags and filtering are automatic
+// ─────────────────────────────────────────────
 
 export default function App() {
   return (
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/"            element={<Home />} />
-        <Route path="/ideas"       element={<IdeasList />} />
-        <Route path="/ideas/:id"   element={<IdeaDetail />} />
-        <Route path="/built"       element={<BuiltList />} />
-        <Route path="/built/:id"   element={<BuiltDetail />} />
-        <Route path="/writing"     element={<WritingList />} />
-        <Route path="/writing/:id" element={<EssayDetail />} />
-        <Route path="/about"       element={<About />} />
-        <Route path="*"            element={<Navigate to="/" replace />} />
+        <Route path="/"               element={<Home />} />
+        <Route path="/projects"       element={<ProjectsList />} />
+        <Route path="/projects/:id"   element={<ProjectDetail />} />
+        <Route path="/about"          element={<About />} />
+        <Route path="*"               element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
