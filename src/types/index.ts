@@ -8,10 +8,12 @@ export interface Idea {
   id: string;
   title: string;
   subtitle: string;
-  body: string;         // supports markdown-style line breaks with \n
-  date: string;         // e.g. "March 2026"
+  body: string;
+  date: string;
   tags: string[];
   status?: 'concept' | 'in progress' | 'built' | 'published';
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 export interface Project {
@@ -22,6 +24,11 @@ export interface Project {
   date: string;
   tags: string[];
   url?: string;
+  githubUrl?: string;
+  // embedPath: serves the project from /public/projects/<id>/
+  // Set this for projects in the /projects folder.
+  // For external live sites, use url instead.
+  embedPath?: string;
   status?: 'live' | 'archived' | 'in progress';
 }
 
@@ -32,7 +39,7 @@ export interface Essay {
   body: string;
   date: string;
   tags: string[];
-  readTime?: string;    // e.g. "6 min read"
+  readTime?: string;
 }
 
 export interface NavItem {

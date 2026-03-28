@@ -8,6 +8,22 @@ import type { Idea } from '../types';
 
 export const ideas: Idea[] = [
   {
+    id: '48-hours-to-midnight',
+    title: '48 Hours to Midnight',
+    subtitle: 'A campaign to mandate human verification on UK social media',
+    date: '2024',
+    status: 'built',
+    tags: ['policy', 'democracy', 'online safety', 'campaign'],
+    body: `Up to 40% of accounts on UK social media are not human. They are bots — run by foreign governments, predator networks, AI companies, and scammers. In the 2024 UK election, just 10 bot accounts posted over 60,000 times and reached an estimated 150 million views. The Online Safety Act did not address this. Most regulation does not address this. The fundamental problem — that we can no longer distinguish humans from machines online — remains unsolved.
+
+48 Hours to Midnight was a campaign built around a single, actionable proposal: mandate that all social media accounts posting content must complete a simple human verification check every 48 hours. Not to read. Not to message privately. Just to post publicly. Ten seconds with a CAPTCHA, repeated every two days. This would be computationally impossible for bot farms running tens of thousands of accounts simultaneously, while being trivially easy for any real person.
+
+The campaign identified three fronts where bots are causing measurable harm: child safety, democratic integrity, and the erosion of human culture online. On child safety, the NSPCC reported an 82% increase in online grooming crimes from 2017 to 2023, with bot networks enabling a single predator to target thousands of children simultaneously. On democracy, foreign state actors are running coordinated influence operations daily. On culture, a UC San Diego study found GPT-4.5 passes the Turing test with a 73% success rate — meaning most people cannot tell they are talking to a machine.
+
+The site provided a full evidence base, a template letter for contacting MPs, direct links to key ministers and parliamentary committees, and a campaign signup. It was built in React and TypeScript, designed to be both an information resource and a direct action tool.`,
+    githubUrl: 'https://github.com/DavidAlexKelly/48-hours-to-midnight',
+  },
+  {
     id: 'great-british-feast-week',
     title: 'The Great British Feast Week',
     subtitle: 'A secular national celebration built around independent hospitality',

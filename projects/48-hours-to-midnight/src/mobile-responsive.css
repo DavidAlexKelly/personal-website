@@ -1,0 +1,599 @@
+/* mobile-responsive.css - IMPROVED VERSION */
+
+/* Ensure proper box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Base mobile styles - under 768px */
+@media (max-width: 768px) {
+  
+  /* Force text to not overflow */
+  body {
+    overflow-x: hidden;
+  }
+  
+  .app-container {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Navigation - simplified mobile nav */
+  nav {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  
+  .nav-title {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .nav-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  
+  .nav-button {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Sections - reduce padding significantly */
+  section {
+    padding: 4rem 1rem !important;
+  }
+  
+  .hero-section {
+    min-height: auto;
+    padding: 6rem 1rem 4rem 1rem !important;
+  }
+
+  /* Hero text - force smaller sizes */
+  h1, .hero-heading {
+    font-size: 2rem !important;
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+  
+  .hero-text {
+    font-size: 1rem !important;
+    line-height: 1.7;
+  }
+
+  /* All headings */
+  h2 {
+    font-size: 1.6rem !important;
+  }
+  
+  h3 {
+    font-size: 1.3rem !important;
+  }
+  
+  h4 {
+    font-size: 1.1rem !important;
+  }
+
+  /* Paragraphs */
+  p, .section-intro {
+    font-size: 1rem !important;
+    line-height: 1.7;
+  }
+
+  /* Buttons - stack and full width */
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  
+  button, .button-primary, .button-secondary {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Stats grid - single column */
+  .grid-auto-fit {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+  
+  .stat-box {
+    padding: 2rem 1.5rem;
+  }
+  
+  .stat-emoji {
+    font-size: 2.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem !important;
+  }
+  
+  .stat-description {
+    font-size: 0.95rem;
+  }
+
+  /* War cards */
+  .war-card {
+    padding: 1.5rem 1rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .war-emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .war-description {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .war-list li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-left: 0;
+  }
+  
+  .war-toggle-button {
+    width: 100%;
+  }
+
+  /* Stories container */
+  .stories-container {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .story-card {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-card h4 {
+    font-size: 1.1rem !important;
+  }
+
+  /* Solution section */
+  .solution-primary {
+    padding: 2rem 1rem;
+    border-radius: 15px;
+  }
+  
+  .solution-badge {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .solution-title {
+    font-size: 1.5rem !important;
+    padding-top: 0;
+  }
+  
+  .solution-subtitle {
+    font-size: 1rem;
+  }
+  
+  .solution-steps {
+    padding: 1rem;
+  }
+  
+  .solution-steps div {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .solution-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  
+  .solution-box {
+    padding: 1.5rem 1rem;
+  }
+  
+  .solution-box h4 {
+    font-size: 1.1rem !important;
+  }
+
+  /* Follow-up cards */
+  .follow-up-heading {
+    font-size: 1.4rem !important;
+  }
+  
+  .follow-up-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  
+  .follow-up-card {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Solution CTA */
+  .solution-cta {
+    padding: 1.5rem 1rem;
+  }
+  
+  .solution-cta h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  .solution-cta-text {
+    font-size: 1rem !important;
+  }
+  
+  .solution-cta-emphasis {
+    font-size: 1.1rem !important;
+  }
+
+  /* CTA Section */
+  .cta-text {
+    font-size: 1rem;
+  }
+  
+  .cta-highlight {
+    font-size: 1.1rem;
+  }
+  
+  .cta-quote {
+    padding: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .cta-quote p {
+    font-size: 1rem !important;
+  }
+  
+  .cta-action {
+    font-size: 1.1rem;
+  }
+  
+  .cta-buttons {
+    width: 100%;
+  }
+  
+  .cta-button {
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+
+  /* Contact Us grid */
+  .contact-us-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  
+  .contact-us-card {
+    padding: 1.5rem;
+  }
+  
+  .contact-us-icon {
+    font-size: 2rem;
+  }
+  
+  .contact-us-link {
+    font-size: 0.95rem;
+  }
+
+  /* Sources */
+  .sources-container h3 {
+    font-size: 1.3rem !important;
+  }
+  
+  .sources-list li {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Divider */
+  .divider {
+    width: 60px;
+    height: 3px;
+    margin-bottom: 2rem;
+  }
+
+  /* Max width containers */
+  .max-width-1200,
+  .max-width-900,
+  .max-width-800 {
+    padding: 0;
+    width: 100%;
+  }
+
+  /* Footer */
+  footer {
+    padding: 2rem 1rem;
+  }
+  
+  .footer-quote {
+    font-size: 1.1rem;
+  }
+
+  /* Hide scroll indicator on mobile */
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* === CONTACT PAGE === */
+  
+  .contact-hero {
+    padding-top: 6rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .contact-heading {
+    font-size: 1.8rem !important;
+  }
+  
+  .contact-intro {
+    font-size: 1rem;
+  }
+
+  /* Letter section */
+  .letter-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+  
+  .copy-button {
+    width: 100%;
+  }
+  
+  .letter-content {
+    padding: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  /* WriteToThem */
+  .writetothem-card {
+    flex-direction: column;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .writetothem-content h3 {
+    font-size: 1.4rem !important;
+  }
+  
+  .writetothem-content p {
+    font-size: 1rem;
+  }
+  
+  .writetothem-button {
+    width: 100%;
+  }
+  
+  .writetothem-stats {
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .writetothem-stat .stat-value {
+    font-size: 1.8rem;
+  }
+
+  /* Contacts grid */
+  .contacts-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .category-title {
+    font-size: 1.3rem !important;
+  }
+  
+  .contact-card {
+    padding: 1.25rem;
+  }
+  
+  .contact-name {
+    font-size: 1.1rem;
+  }
+  
+  .contact-relevance {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  /* Actions grid */
+  .actions-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .action-card {
+    padding: 1.5rem;
+  }
+  
+  .action-emoji {
+    font-size: 2rem;
+  }
+
+  /* Back section */
+  .back-section {
+    padding: 2rem 1rem !important;
+  }
+  
+  .back-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Very small screens - under 400px */
+@media (max-width: 400px) {
+  
+  h1, .hero-heading {
+    font-size: 1.6rem !important;
+  }
+  
+  h2 {
+    font-size: 1.4rem !important;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem !important;
+  }
+  
+  .war-emoji {
+    font-size: 2.5rem;
+  }
+  
+  section {
+    padding: 3rem 0.75rem !important;
+  }
+  
+  nav {
+    padding: 0.75rem;
+  }
+  
+  .nav-title {
+    font-size: 0.95rem;
+  }
+  
+  .nav-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  
+  nav {
+    padding: 1rem 1.25rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .nav-title {
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  /* Show hamburger on mobile */
+  .hamburger-button {
+    display: flex;
+  }
+  
+  /* Hide nav buttons by default on mobile */
+  .nav-buttons {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Show nav buttons when menu is open */
+  .nav-buttons.show {
+    display: flex;
+  }
+  
+  .nav-button {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Smooth transition for menu */
+  nav.menu-open {
+    background: rgba(0, 0, 0, 0.98);
+  }
+
+    /* Email Signup */
+  .email-signup-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .email-signup-card h3 {
+    font-size: 1.5rem;
+  }
+  
+  .email-signup-icon {
+    font-size: 2.5rem;
+  }
+  
+  .email-signup-input {
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .email-signup-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  /* Founders section mobile */
+.founders-desktop {
+  display: none;
+}
+
+.founders-mobile {
+  display: block;
+}
+
+.founders-label {
+  font-size: 1.2rem;
+}
+
+.founders-credit {
+  font-size: 1.2rem;
+}
+
+.founder-name {
+  display: block;
+  margin: 0.75rem 0;
+}
+}
+
+@media (max-width: 400px) {
+  nav {
+    padding: 0.75rem 1rem;
+  }
+  
+  .nav-title {
+    font-size: 0.9rem;
+  }
+  
+  .hamburger-button {
+    width: 24px;
+    height: 18px;
+  }
+  
+  .hamburger-line.open:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger-line.open:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .nav-button {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}

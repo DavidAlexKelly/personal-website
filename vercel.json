@@ -1,5 +1,14 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/projects/48-hours-to-midnight/:path*",
+      "destination": "/projects/48-hours-to-midnight/index.html"
+    },
+    {
+      "source": "/((?!projects/).*)",
+      "destination": "/index.html"
+    }
   ]
 }
