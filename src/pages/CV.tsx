@@ -1,21 +1,5 @@
 import { cv } from '../data/cv';
 
-// ── Inline bold renderer ───────────────────────────────────────────────────
-// Parses __text__ markers into <strong> spans
-
-function RichText({ text, style }: { text: string; style?: React.CSSProperties }) {
-  const parts = text.split(/(__.*?__)/g);
-  return (
-    <span style={style}>
-      {parts.map((part, i) =>
-        part.startsWith('__') && part.endsWith('__')
-          ? <strong key={i} style={{ fontWeight: 500, color: 'var(--ink)' }}>{part.slice(2, -2)}</strong>
-          : <span key={i}>{part}</span>
-      )}
-    </span>
-  );
-}
-
 // ── Section label ─────────────────────────────────────────────────────────
 
 function SectionLabel({ children }: { children: string }) {
@@ -23,14 +7,15 @@ function SectionLabel({ children }: { children: string }) {
     <div style={{
       marginBottom: '1.5rem',
       paddingBottom: '0.5rem',
-      borderBottom: '1px solid var(--border)',
+      borderBottom: '2px solid var(--ink-light)',
     }}>
       <span style={{
-        fontSize: '0.68rem',
-        color: 'var(--ink-faint)',
+        fontSize: '0.72rem',
+        color: 'var(--ink)',
         textTransform: 'uppercase',
-        letterSpacing: '0.1em',
+        letterSpacing: '0.12em',
         fontFamily: 'var(--font-body)',
+        fontWeight: 500,
       }}>
         {children}
       </span>
@@ -51,24 +36,23 @@ function ProjectBlock({
 }) {
   return (
     <div style={{
-      marginBottom: '1.75rem',
+      marginBottom: '1.6rem',
       paddingLeft: '1rem',
       borderLeft: '2px solid var(--border)',
     }}>
       <p style={{
-        fontSize: '0.82rem',
+        fontSize: '0.85rem',
         fontWeight: 500,
         color: 'var(--ink)',
-        marginBottom: client ? '0.15rem' : '0.6rem',
-        letterSpacing: '0.01em',
+        marginBottom: client ? '0.15rem' : '0.55rem',
       }}>
         {title}
       </p>
       {client && (
         <p style={{
-          fontSize: '0.74rem',
+          fontSize: '0.75rem',
           color: 'var(--ink-faint)',
-          marginBottom: '0.6rem',
+          marginBottom: '0.55rem',
           fontStyle: 'italic',
         }}>
           {client}
@@ -79,11 +63,11 @@ function ProjectBlock({
           <li key={i} style={{
             display: 'flex',
             gap: '0.6rem',
-            marginBottom: '0.45rem',
-            lineHeight: 1.6,
+            marginBottom: '0.4rem',
+            lineHeight: 1.65,
           }}>
             <span style={{ color: 'var(--ink-faint)', flexShrink: 0, fontSize: '0.78rem', marginTop: '0.15em' }}>—</span>
-            <RichText text={b} style={{ fontSize: '0.86rem', color: 'var(--ink-light)', fontWeight: 300 }} />
+            <span style={{ fontSize: '0.86rem', color: 'var(--ink-light)', fontWeight: 300 }}>{b}</span>
           </li>
         ))}
       </ul>
@@ -100,68 +84,14 @@ function BulletList({ bullets }: { bullets: string[] }) {
         <li key={i} style={{
           display: 'flex',
           gap: '0.65rem',
-          marginBottom: '0.55rem',
+          marginBottom: '0.5rem',
           lineHeight: 1.65,
         }}>
           <span style={{ color: 'var(--ink-faint)', flexShrink: 0, fontSize: '0.78rem', marginTop: '0.15em' }}>—</span>
-          <RichText text={b} style={{ fontSize: '0.88rem', color: 'var(--ink-light)', fontWeight: 300 }} />
+          <span style={{ fontSize: '0.88rem', color: 'var(--ink-light)', fontWeight: 300 }}>{b}</span>
         </li>
       ))}
     </ul>
-  );
-}
-
-// ── Experience block ──────────────────────────────────────────────────────
-
-function ExperienceBlock({ job }: { job: typeof cv.experience[0] }) {
-  return (
-    <div style={{ marginBottom: '2.75rem' }}>
-      {/* Company + period */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'baseline',
-        justifyContent: 'space-between',
-        gap: '1rem',
-        marginBottom: '0.15rem',
-      }}>
-        <span style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '1.15rem',
-          fontWeight: 500,
-          color: 'var(--ink)',
-        }}>
-          {job.company}
-        </span>
-        <span style={{
-          fontSize: '0.78rem',
-          color: 'var(--ink-faint)',
-          whiteSpace: 'nowrap',
-          flexShrink: 0,
-          fontStyle: 'italic',
-        }}>
-          {job.period}
-        </span>
-      </div>
-
-      {/* Role */}
-      <p style={{
-        fontSize: '0.84rem',
-        color: 'var(--ink-light)',
-        marginBottom: '1.1rem',
-        fontStyle: 'italic',
-        fontFamily: 'var(--font-display)',
-      }}>
-        {job.role}
-      </p>
-
-      {/* Named projects (Decho) or flat bullets (AtkinsRéalis) */}
-      {job.projects
-        ? job.projects.map((proj, i) => (
-            <ProjectBlock key={i} title={proj.title} client={proj.client} bullets={proj.bullets} />
-          ))
-        : job.bullets && <BulletList bullets={job.bullets as string[]} />
-      }
-    </div>
   );
 }
 
@@ -172,7 +102,7 @@ export function CV() {
     <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '6rem 2rem 4rem' }}>
 
       {/* Header */}
-      <div style={{ marginBottom: '2rem', paddingBottom: '2rem', borderBottom: '1px solid var(--border)' }}>
+      <div style={{ marginBottom: '2.5rem', paddingBottom: '2rem', borderBottom: '1px solid var(--border)' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
           <div>
             <h1 style={{
@@ -185,7 +115,7 @@ export function CV() {
               {cv.name}
             </h1>
             <p style={{
-              fontSize: '0.88rem',
+              fontSize: '0.9rem',
               color: 'var(--ink-light)',
               fontStyle: 'italic',
               fontFamily: 'var(--font-display)',
@@ -232,14 +162,62 @@ export function CV() {
       {/* Experience */}
       <div style={{ marginBottom: '3rem' }}>
         <SectionLabel>Experience</SectionLabel>
+
         {cv.experience.map((job, i) => (
-          <ExperienceBlock key={i} job={job} />
+          <div key={i} style={{ marginBottom: '3rem' }}>
+            {/* Company name + period */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              gap: '1rem',
+              marginBottom: '0.2rem',
+            }}>
+              <span style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.35rem',
+                fontWeight: 500,
+                color: 'var(--ink)',
+              }}>
+                {job.company}
+              </span>
+              <span style={{
+                fontSize: '0.78rem',
+                color: 'var(--ink-faint)',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+                fontStyle: 'italic',
+              }}>
+                {job.period}
+              </span>
+            </div>
+
+            {/* Role */}
+            <p style={{
+              fontSize: '0.85rem',
+              color: 'var(--ink-light)',
+              marginBottom: '1.25rem',
+              fontStyle: 'italic',
+              fontFamily: 'var(--font-display)',
+            }}>
+              {job.role}
+            </p>
+
+            {/* Projects or flat bullets */}
+            {job.projects
+              ? job.projects.map((proj, j) => (
+                  <ProjectBlock key={j} title={proj.title} client={proj.client} bullets={proj.bullets} />
+                ))
+              : job.bullets && <BulletList bullets={job.bullets as string[]} />
+            }
+          </div>
         ))}
       </div>
 
       {/* Education */}
       <div style={{ marginBottom: '3rem' }}>
         <SectionLabel>Education</SectionLabel>
+
         {cv.education.map((edu, i) => (
           <div key={i} style={{ marginBottom: '2rem' }}>
             <div style={{
@@ -247,11 +225,11 @@ export function CV() {
               alignItems: 'baseline',
               justifyContent: 'space-between',
               gap: '1rem',
-              marginBottom: '0.15rem',
+              marginBottom: '0.2rem',
             }}>
               <span style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '1.15rem',
+                fontSize: '1.35rem',
                 fontWeight: 500,
                 color: 'var(--ink)',
               }}>
@@ -268,17 +246,17 @@ export function CV() {
               </span>
             </div>
             <p style={{
-              fontSize: '0.84rem',
+              fontSize: '0.85rem',
               color: 'var(--ink-light)',
-              marginBottom: '0.85rem',
+              marginBottom: '0.9rem',
               fontFamily: 'var(--font-display)',
               fontStyle: 'italic',
             }}>
               {edu.degree}
               {edu.classification && (
-                <strong style={{ fontStyle: 'normal', fontWeight: 500, color: 'var(--ink)', marginLeft: '0.4rem' }}>
-                  — {edu.classification}
-                </strong>
+                <span style={{ color: 'var(--ink)', fontWeight: 500, fontStyle: 'normal' }}>
+                  {' '}— {edu.classification}
+                </span>
               )}
             </p>
             <BulletList bullets={edu.bullets} />
