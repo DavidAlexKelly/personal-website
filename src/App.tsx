@@ -3,6 +3,7 @@ import { Nav } from './components/Nav';
 import { Home } from './pages/Home';
 import { ProjectsList, ProjectDetail } from './pages/Projects';
 import { About } from './pages/About';
+import { CV } from './pages/CV';
 import './index.css';
 
 // ─────────────────────────────────────────────
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/projects"       element={<ProjectsList />} />
         <Route path="/projects/:id"   element={<ProjectDetail />} />
         <Route path="/about"          element={<About />} />
+        <Route path="/cv"             element={<CV />} />
         <Route path="*"               element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

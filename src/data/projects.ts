@@ -11,7 +11,7 @@ export const projects: Project[] = [
     id: '48-hours-to-midnight',
     title: '48 Hours to Midnight',
     subtitle: 'A campaign to mandate human verification on UK social media',
-    date: '2024',
+    date: 'December 2025',
     typeTags: ['built', 'campaign'],
     topicTags: ['democracy', 'online safety', 'politics', 'technology'],
     githubUrl: 'https://github.com/DavidAlexKelly/48-hours-to-midnight',
