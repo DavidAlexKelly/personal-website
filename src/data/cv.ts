@@ -71,11 +71,41 @@ export const cv = {
     },
   ],
   skills: [
-    { label: 'Palantir Foundry', detail: 'Ontology design, Pipeline Builder, Workshop, Code Workbook, AIP' },
-    { label: 'Languages', detail: 'Python, TypeScript, JavaScript, SQL, Java' },
-    { label: 'Frontend', detail: 'React, custom dashboards, data visualisation' },
-    { label: 'Data & ML', detail: 'Time-series forecasting, ML model development, ETL pipelines' },
-    { label: 'Cloud & DevOps', detail: 'Cloud computing, distributed systems, secure by design' },
-    { label: 'Sectors', detail: 'Defence, Healthcare (NHS), Public Sector, Commercial' },
+    {
+      label: 'Palantir Foundry',
+      detail: 'Ontology design, Pipeline Builder, Workshop, Code Workbook, AIP Logic, Contour, Quartz scheduling',
+    },
+    {
+      label: 'Languages',
+      detail: 'Python, TypeScript, JavaScript, SQL, R',
+    },
+    {
+      label: 'Data Engineering',
+      detail: 'ETL/ELT pipeline design, data modelling, schema design, batch & streaming processing',
+    },
+    {
+      label: 'Frontend & Visualisation',
+      detail: 'React, dashboard design, D3.js, component libraries, responsive UI',
+    },
+    {
+      label: 'Cloud & Infrastructure',
+      detail: 'AWS, Azure, containerisation (Docker/Kubernetes), CI/CD',
+    },
+    {
+      label: 'Machine Learning',
+      detail: 'Supervised/unsupervised learning, model training & evaluation, feature engineering, time-series analysis',
+    },
+    {
+      label: 'Databases',
+      detail: 'SQL, NoSQL, PostgreSQL, Spark, data warehousing concepts',
+    },
+    {
+      label: 'Architecture & Design',
+      detail: 'Microservices, API design, distributed systems, system design, secure by design',
+    },
+    {
+      label: 'Stakeholder & Delivery',
+      detail: 'Technical training delivery, cross-sector client engagement, embedding within government teams, translating operational needs into data products',
+    },
   ],
 };
