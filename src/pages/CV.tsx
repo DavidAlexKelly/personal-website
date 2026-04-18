@@ -1,14 +1,88 @@
 import { cv } from '../data/cv';
 
+// ── Print styles injected once into <head> ────────────────────────────────
+
+const PRINT_STYLES = `
+@media print {
+  /* Hide everything except the CV content */
+  body > * { display: none !important; }
+  #cv-print-root { display: block !important; }
+
+  /* Reset page */
+  @page {
+    margin: 15mm 16mm;
+    size: A4;
+  }
+
+  #cv-print-root {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 10pt;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+
+  /* Hide the download button itself when printing */
+  #cv-download-btn { display: none !important; }
+
+  /* Section dividers */
+  .cv-section-label {
+    border-bottom: 1.5pt solid #6b6b6b !important;
+    margin-bottom: 8pt !important;
+    padding-bottom: 3pt !important;
+  }
+
+  /* Project blocks */
+  .cv-project-block {
+    border-left: 1.5pt solid #e8e8e4 !important;
+    padding-left: 8pt !important;
+    margin-bottom: 8pt !important;
+  }
+
+  /* Avoid page breaks inside blocks */
+  .cv-job-block, .cv-project-block, .cv-edu-block {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure colours print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+`;
+
+function injectPrintStyles() {
+  if (document.getElementById('cv-print-styles')) return;
+  const style = document.createElement('style');
+  style.id = 'cv-print-styles';
+  style.textContent = PRINT_STYLES;
+  document.head.appendChild(style);
+}
+
+function handleDownload() {
+  injectPrintStyles();
+  // Give the browser a tick to apply styles before opening print dialog
+  requestAnimationFrame(() => {
+    window.print();
+  });
+}
+
 // ── Section label ─────────────────────────────────────────────────────────
 
 function SectionLabel({ children }: { children: string }) {
   return (
-    <div style={{
-      marginBottom: '1.5rem',
-      paddingBottom: '0.5rem',
-      borderBottom: '2px solid var(--ink-light)',
-    }}>
+    <div
+      className="cv-section-label"
+      style={{
+        marginBottom: '1.5rem',
+        paddingBottom: '0.5rem',
+        borderBottom: '2px solid var(--ink-light)',
+      }}
+    >
       <span style={{
         fontSize: '0.72rem',
         color: 'var(--ink)',
@@ -35,11 +109,14 @@ function ProjectBlock({
   bullets: string[];
 }) {
   return (
-    <div style={{
-      marginBottom: '1.6rem',
-      paddingLeft: '1rem',
-      borderLeft: '2px solid var(--border)',
-    }}>
+    <div
+      className="cv-project-block"
+      style={{
+        marginBottom: '1.6rem',
+        paddingLeft: '1rem',
+        borderLeft: '2px solid var(--border)',
+      }}
+    >
       <p style={{
         fontSize: '0.85rem',
         fontWeight: 500,
@@ -99,7 +176,7 @@ function BulletList({ bullets }: { bullets: string[] }) {
 
 export function CV() {
   return (
-    <div style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '6rem 2rem 4rem' }}>
+    <div id="cv-print-root" style={{ maxWidth: 'var(--max-w)', margin: '0 auto', padding: '6rem 2rem 4rem' }}>
 
       {/* Header */}
       <div style={{ marginBottom: '2.5rem', paddingBottom: '2rem', borderBottom: '1px solid var(--border)' }}>
@@ -164,8 +241,7 @@ export function CV() {
         <SectionLabel>Experience</SectionLabel>
 
         {cv.experience.map((job, i) => (
-          <div key={i} style={{ marginBottom: '3rem' }}>
-            {/* Company name + period */}
+          <div key={i} className="cv-job-block" style={{ marginBottom: '3rem' }}>
             <div style={{
               display: 'flex',
               alignItems: 'baseline',
@@ -191,8 +267,6 @@ export function CV() {
                 {job.period}
               </span>
             </div>
-
-            {/* Role */}
             <p style={{
               fontSize: '0.85rem',
               color: 'var(--ink-light)',
@@ -202,8 +276,6 @@ export function CV() {
             }}>
               {job.role}
             </p>
-
-            {/* Projects or flat bullets */}
             {job.projects
               ? job.projects.map((proj, j) => (
                   <ProjectBlock key={j} title={proj.title} client={proj.client} bullets={proj.bullets} />
@@ -219,7 +291,7 @@ export function CV() {
         <SectionLabel>Education</SectionLabel>
 
         {cv.education.map((edu, i) => (
-          <div key={i} style={{ marginBottom: '2rem' }}>
+          <div key={i} className="cv-edu-block" style={{ marginBottom: '2rem' }}>
             <div style={{
               display: 'flex',
               alignItems: 'baseline',
@@ -288,21 +360,32 @@ export function CV() {
 
       {/* Download */}
       <div style={{ borderTop: '1px solid var(--border)', paddingTop: '2rem' }}>
-        <a
-          href="/David_Kelly_CV.pdf"
-          download
+        <button
+          id="cv-download-btn"
+          onClick={handleDownload}
           style={{
             fontSize: '0.78rem',
             color: 'var(--ink-faint)',
             borderBottom: '1px solid var(--border)',
             paddingBottom: '1px',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
             transition: 'all 0.15s',
+            fontFamily: 'var(--font-body)',
+          } as React.CSSProperties}
+          onMouseEnter={e => {
+            e.currentTarget.style.color = 'var(--ink)';
+            e.currentTarget.style.borderBottomColor = 'var(--ink)';
           }}
-          onMouseEnter={e => { e.currentTarget.style.color = 'var(--ink)'; e.currentTarget.style.borderColor = 'var(--ink)'; }}
-          onMouseLeave={e => { e.currentTarget.style.color = 'var(--ink-faint)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
+          onMouseLeave={e => {
+            e.currentTarget.style.color = 'var(--ink-faint)';
+            e.currentTarget.style.borderBottomColor = 'var(--border)';
+          }}
         >
           Download PDF ↓
-        </a>
+        </button>
       </div>
     </div>
   );
