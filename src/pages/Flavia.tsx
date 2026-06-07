@@ -8,11 +8,16 @@ export function Flavia() {
 
     `If anything, please do not take what I said as that I only care about you in a physical way, because I don't. It's not that I want to sleep with you, it's that I want so wholly to be close to you, to be beside you, to see all aspects of you, to feel and see all of you. I want to hold you so tightly with nothing between us and have the whole world fade away. What I really want is what I had with you sleeping beside me in your garden as I watched planes cut through the sky and I was so happy I wanted to die.  This isn't me being a typical man. It's pain. The fact you do not feel the same way felt like my chest being crushed in that moment. Years of apathetic wandering only to find something that I was so close to not finding by pure chance, and then feel like that thing wasn't what I thought. That was all I could think about.`,
 
-    `But as I sit here and focus on the pain and really observe it, it isn't that at all. Looking closer, I see now that it's in reality the fear of losing you. That one day you will find someone who you feel that connection with more than me, and I'll be alone again. In hindsight, my reaction has damned me to my worst fear. So surprised with my luck, I dropped what I had in the process. I am naturally self sabotaging and though I am much better than I used to be, still mentally ill and im sorry you had to see that.Flavia, you really are one of a kind. I hope we travel the world and do all the dumb stuff we said we would do. Any pain i feel is insignificant to the idea of not seeing you again. I can live with that pain. I've lived with much worse. Only at distance do I fully realise my love for all things about you is so much more than that pain.`,
+    `But as I sit here and focus on the pain and really observe it, it isn't that at all. Looking closer, I see now that it's in reality the fear of losing you. That one day you will find someone who you feel that connection with more than me, and I'll be alone again. In hindsight, my reaction has damned me to my worst fear. So surprised with my luck, I dropped what I had in the process. I am naturally self sabotaging and though I am much better than I used to be, still mentally ill and im sorry you had to see that.`,
 
+    `Flavia, you really are one of a kind. I hope we travel the world and do all the dumb stuff we said we would do. And if not I will cherish the memories we had and forever be grateful that I had such a chance encounter with such a fantastic person.`,
+
+    `Now and forever Flavia I love you.`
   ];
 
+ 
   const loveLines = [
+
     "I love how funny you are.",
     "I love how you play along with my bits with no hesitation.",
     "I love your outlook on life.",
