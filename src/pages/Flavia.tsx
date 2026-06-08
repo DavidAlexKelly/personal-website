@@ -12,7 +12,7 @@ export function Flavia() {
 
     `I know this is all a bit much and I know you may read this and run but its how I feel and Flavia, you really are one of a kind. I hope we travel the world and do all the dumb stuff we said we would do. And if not I will cherish the memories we had and forever be grateful that I had such a chance encounter with such a fantastic person.`,
 
-    `Now and forever Flavia I love you.`
+    `Now and forever Flavia - love ya.`
   ];
 
   const loveLines = [
