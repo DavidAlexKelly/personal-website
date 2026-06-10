@@ -6,7 +6,6 @@ import { ProjectsList, ProjectDetail } from './pages/Projects';
 import { About } from './pages/About';
 import { Views } from './pages/Views';
 import { CV } from './pages/CV';
-import { Flavia } from './pages/Flavia';
 import './index.css';
 
 function Gated() {
@@ -30,7 +29,6 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/flavia" element={<Flavia />} />
         <Route path="*"       element={<Gated />} />
       </Routes>
     </BrowserRouter>
